@@ -18,9 +18,7 @@ Now you’re one step closer to hitting the jackpot!!
 ## Functionalities:
 The Millennium Casino has 3 main components:
 
--Registration Page
--Coin Flip game
--BlackJack game
+Registration Page, Coin Flip game, and BlackJack game
 
 ## Game Controls:
 
