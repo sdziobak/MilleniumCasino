@@ -12,7 +12,7 @@ Step 3: Go to Gluon or Oracle and download the JavaFX libraries that match your 
 https://gluonhq.com/products/javafx/openjfx-19-release-notes/<br />
 Step 4: Make sure to EXTRACT this file.<br />
 Step 5: Once you have those steps finished, there is only 1 step left. Make sure you add the path to the extracted JavaFX SDK files, to your project’s build path.<br />
-Step 6: Clone this repository from GitHub!
+Step 6: Clone this repository from GitHub!<br />
 
 Now you’re one step closer to hitting the jackpot!!
 
