@@ -66,8 +66,8 @@ public class BlackJack extends Application {
         Text playerScore = new Text("Player: ");
 
         
-        Image image = new Image("C:\\Users\\ttjtv\\Documents\\bjtable.jpg");
-        leftBG.setFill(new ImagePattern(image));
+        Image tableImage = new Image(getClass().getResourceAsStream("/application/bjtable.jpg"));
+        leftBG.setFill(new ImagePattern(tableImage));
         leftVBox.getChildren().addAll(dealerScore, dealerCards, message, playerCards, playerScore);
 
         VBox rightVBox = new VBox(20);
