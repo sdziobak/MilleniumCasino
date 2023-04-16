@@ -27,18 +27,12 @@ public class BlackJack extends Application {
     private Deck deck = new Deck();
     private Hand dealer, player;
     private Text message = new Text();
-
     private SimpleBooleanProperty playable = new SimpleBooleanProperty(false);
-
     private HBox dealerCards = new HBox(20);
     private HBox playerCards = new HBox(20);
     
     private Frame mainFrame;
     private Stage blackjackStage;
-    
-//    public BlackJack(Stage blackjackStage) {
-//    	
-//    }
 
     private Parent createContent() throws FileNotFoundException {
 
@@ -164,9 +158,7 @@ public class BlackJack extends Application {
         }
         else if (playerValue == dealerValue){
             winner = "Draw";
-
         }
-
         message.setText(winner + " WON!");
     }
 

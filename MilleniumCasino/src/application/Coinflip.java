@@ -73,16 +73,16 @@ public class Coinflip {
         if (coinIsHeads) { 
             outcomeText.setText("Outcome is Heads");
             pane.setStyle("-fx-background-color: #097aeb");
-            File headsFile = new File("C:\\Users\\ttjtv\\Documents\\2019-america-the-beautiful-quarters-W-CourtesyUSMint.jpg");
-            Image headsImage = new Image(headsFile.toURI().toString());
+            Image headsImage = new Image(getClass().getResourceAsStream("/application/2019-america-the-beautiful-quarters-W-CourtesyUSMint.jpg"));
+            //Image headsImage = new Image(headsFile.toURI().toString());
             coinImage.setImage(headsImage);
             coinImage.setFitWidth(400);
             coinImage.setFitHeight(400);
         } else { 
             outcomeText.setText("Outcome is Tails");
             pane.setStyle("-fx-background-color: tomato");
-            File tailsFile = new File("C:\\Users\\ttjtv\\Documents\\download.jfif");
-            Image tailsImage = new Image(tailsFile.toURI().toString());
+            Image tailsImage = new Image(getClass().getResourceAsStream("/application/download.jfif"));
+            //Image tailsImage = new Image(tailsFile.toURI().toString());
             coinImage.setImage(tailsImage);
             coinImage.setFitWidth(400);
             coinImage.setFitHeight(400);

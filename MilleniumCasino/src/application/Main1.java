@@ -21,14 +21,12 @@ public class Main1 {
                 new CoinFlipFX();
             }
         });
-    	
-    	
-    	
+     	
+        String userFile = application.RegistrationPage1.getUserFile();
+        
         IDandPasswords1 idandPasswords = new IDandPasswords1();
 
         //creating an instance of the login page
-        LoginPage1 loginPage = new LoginPage1(idandPasswords.getLoginInfo());
-        
-        
+        LoginPage1 loginPage = new LoginPage1(userFile);
     }
 }
