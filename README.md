@@ -12,6 +12,7 @@ Step 3: Go to Gluon or Oracle and download the JavaFX libraries that match your 
 https://gluonhq.com/products/javafx/openjfx-19-release-notes/<br />
 Step 4: Make sure to EXTRACT this file.<br />
 Step 5: Once you have those steps finished, there is only 1 step left. Make sure you add the path to the extracted JavaFX SDK files, to your project’s build path.<br />
+ "vmArgs": "--module-path C:\\Users\\sarah\\Downloads\\javafx-sdk-19.0.2.1\\javafx-sdk-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib --add-modules javafx.controls,javafx.fxml",<br />
 Step 6: Clone the master branch from GitHub!<br />
 
 Now you’re one step closer to hitting the jackpot!!
