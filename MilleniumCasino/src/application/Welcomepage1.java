@@ -30,6 +30,7 @@ public class Welcomepage1 implements ActionListener{
 
     //constructor
     Welcomepage1(String userID){
+    	
     	coinflipbtn.addActionListener(this);
     	blackjackbtn.addActionListener(this);
     	
@@ -80,13 +81,13 @@ public class Welcomepage1 implements ActionListener{
         frame.add(LogoutButton);
 
     }
+    
 
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource()==LogoutButton) {
             frame.dispose();
             LoginPage1 login = new LoginPage1(userFile);
-            
         }
 
         if(e.getSource()==coinflipbtn) {
@@ -96,8 +97,6 @@ public class Welcomepage1 implements ActionListener{
                 Coinflip cf = new Coinflip(coinflipStage, frame);
                 cf.start(coinflipStage);
             });
-
-
         }
 
         if(e.getSource()==blackjackbtn) {
@@ -108,10 +107,6 @@ public class Welcomepage1 implements ActionListener{
                 BlackJack bj = new BlackJack(bjStage, frame);
                 bj.start(bjStage);
             });
-
-            
         }
-        
     }
-    
 }

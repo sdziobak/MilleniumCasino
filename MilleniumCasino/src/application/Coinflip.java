@@ -44,12 +44,24 @@ public class Coinflip {
          betAmount = new TextField();
          betAmount.setPromptText("Enter Bet Amount");
          coinImage = new ImageView();
+         
+         backBtn = new Button("Back");
 
          flipButton.setOnAction(this::processCoinFlip);
          headsButton.setOnAction(this::chooseHeads);
          tailsButton.setOnAction(this::chooseTails);
+         
+//         backBtn.setOnAction(new EventHandler<ActionEvent>() {
+//        	    @Override
+//        	    public void handle(ActionEvent event) {
+//        	        // Close the current stage
+//        	        coinflipStage.close();
+//        	        // Show the main frame
+//        	        mainFrame.setVisible(true);
+//        	    }
+//        	});
 
-         pane = new FlowPane(headsButton, tailsButton, betAmount, flipButton, outcomeText, coinImage);
+         pane = new FlowPane(headsButton, tailsButton, betAmount, flipButton, outcomeText, coinImage, backBtn);
          pane.setAlignment(Pos.CENTER);
          pane.setHgap(20);
          pane.setStyle("-fx-background-color: slategray");
@@ -57,8 +69,6 @@ public class Coinflip {
 
          coinflipStage.setTitle("Coin Flip");
          coinflipStage.setScene(scene);
-        
-        
     }
 
     public void start(Stage stage) {
