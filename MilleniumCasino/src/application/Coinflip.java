@@ -31,6 +31,7 @@ public class Coinflip {
     private TextField betAmount;
     private ImageView coinImage;
     private boolean userChoiceHeads;
+    private Button backBtn;
 
     public Coinflip(Stage coinflipStage, Frame mainFrame) {
     	this.coinflipStage = coinflipStage;

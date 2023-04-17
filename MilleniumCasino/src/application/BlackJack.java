@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -30,6 +31,7 @@ public class BlackJack extends Application {
     private SimpleBooleanProperty playable = new SimpleBooleanProperty(false);
     private HBox dealerCards = new HBox(20);
     private HBox playerCards = new HBox(20);
+    private TextField betTextField;
     
     private Frame mainFrame;
     private Stage blackjackStage;
@@ -73,7 +75,9 @@ public class BlackJack extends Application {
         VBox rightVBox = new VBox(20);
         rightVBox.setAlignment(Pos.CENTER);
 
-        
+        betTextField = new TextField("Enter bet amount");
+        betTextField.setPrefWidth(150);
+        Button btnPlaceBet = new Button("Place Bet");
 
         Button btnPlay = new Button("PLAY");
         Button btnHit = new Button("HIT");
@@ -82,12 +86,15 @@ public class BlackJack extends Application {
         HBox buttonsHBox = new HBox(15, btnHit, btnStand);
         buttonsHBox.setAlignment(Pos.CENTER);
 
-        rightVBox.getChildren().addAll(btnPlay,buttonsHBox);
+        rightVBox.getChildren().addAll(btnPlay,buttonsHBox, betTextField, btnPlaceBet);
 
 
         rootLayout.getChildren().addAll(new StackPane(leftBG, leftVBox), new StackPane(rightBG, rightVBox));
         root.getChildren().addAll(background, rootLayout);
-
+        
+        btnPlay.disableProperty().bind(playable);
+        btnHit.disableProperty().bind(playable.not());
+        btnStand.disableProperty().bind(playable.not().or(betTextField.textProperty().isEmpty()));
 
         btnPlay.disableProperty().bind(playable);
         btnHit.disableProperty().bind(playable.not());
@@ -143,23 +150,65 @@ public class BlackJack extends Application {
     }
 
     private void endGame() {
-        playable.set(false);
+    	playable.set(false);
 
         int dealerValue = dealer.valueProperty().get();
         int playerValue = player.valueProperty().get();
         String winner = "Exceptional case: d: " + dealerValue + " p: " + playerValue;
 
         if (dealerValue == 21 || playerValue > 21 || dealerValue == playerValue
-                || (dealerValue < 21 && dealerValue > playerValue)) {
+                 || (dealerValue < 21 && dealerValue > playerValue)) {
             winner = "Dealer";
-        }
-        else if (playerValue == 21 || dealerValue > 21 || playerValue > dealerValue) {
+        } else if (playerValue == 21 || dealerValue > 21 || playerValue > dealerValue) {
             winner = "Player";
-        }
-        else if (playerValue == dealerValue){
+        } else if (playerValue == dealerValue || (playerValue == 21 && dealerValue > 21)) {
             winner = "Draw";
         }
-        message.setText(winner + " WON!");
+
+        message.setText(winner+ "wins!");
+
+
+        int betAmount = 0;
+        try {
+            betAmount = Integer.parseInt(betTextField.getText());
+        } catch (NumberFormatException e) {
+            // Handle invalid bet amount input
+        }
+
+        int amountWonOrLost = 0;
+        if (winner.equals("Player")) {
+            amountWonOrLost = betAmount;
+        } else if (winner.equals("Dealer")) {
+            amountWonOrLost = -betAmount;
+        }
+
+        String result = "";
+        if (amountWonOrLost > 0) {
+            result = "You won: $" + amountWonOrLost;
+        } else if (amountWonOrLost < 0) {
+            result = "You lost: $" + (-amountWonOrLost);
+        } else {
+            result = "Bet not Placed, Please Enter Bet!";
+        }
+
+        message.setText(result);
+//        playable.set(false);
+//
+//        int dealerValue = dealer.valueProperty().get();
+//        int playerValue = player.valueProperty().get();
+//        String winner = "Exceptional case: d: " + dealerValue + " p: " + playerValue;
+//
+//        if (dealerValue == 21 || playerValue > 21 || dealerValue == playerValue
+//                || (dealerValue < 21 && dealerValue > playerValue)) {
+//            winner = "Dealer";
+//        }
+//        else if (playerValue == 21 || dealerValue > 21 || playerValue > dealerValue) {
+//            winner = "Player";
+//        }
+//        else if (playerValue == dealerValue){
+//            winner = "Draw";
+//        }
+//        message.setText(winner + " WON!");
     }
 
     public BlackJack(Stage blackjackStage, Frame mainFrame) {
